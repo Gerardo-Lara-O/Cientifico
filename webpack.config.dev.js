@@ -4,7 +4,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = { // objeto que define la configuracion
     entry: './src/index.js', // Archivo de entrada
-    // mode: "production",
+    mode: "development",
     output: {  // Configuracion de salida
         path: path.resolve(__dirname, 'dist'), // Ruta absoluta para los archivos generados
         filename: 'main.js', // Nombre del archivo de salida

@@ -4,7 +4,9 @@
   "description": "Una SPA de Rick y Morty",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production --config webpack.config.js",
+    "dev": "webpack --mode development --config webpack.config.js",
+    "start": "webpack serve --config webpack.config.js --mode development"
   },
   "keywords": [],
   "author": "Gerardo Lara",
