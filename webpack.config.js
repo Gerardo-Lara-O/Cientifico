@@ -1,5 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 
 module.exports = { // objeto que define la configuracion
@@ -19,7 +21,11 @@ module.exports = { // objeto que define la configuracion
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader',
-                }
+                },
+            },
+            {
+                test: /\.css$/i,
+                use: ['style-loader', 'css-loader'],
             }
         ]
     },
@@ -31,6 +37,16 @@ module.exports = { // objeto que define la configuracion
                 filename: './index.html'
             }
         ),
+        new CopyWebpackPlugin({
+            patterns: [
+                {
+                    from: path.resolve(__dirname, 'src/styles/styles.css'), // Carpeta de origen
+                    to: 'styles/', // Carpeta de destino dentro de dist
+                },
+            ],
+        }),
+        new MiniCssExtractPlugin(),
+
     ],
     devServer: {
         static: {
